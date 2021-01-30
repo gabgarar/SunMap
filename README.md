@@ -7,11 +7,6 @@
 	Developed by: 
 	*	Gabriel García García        : gabgarar@gmail.com   			github@gabgarar
 ```
-
-Developed by Gabriel García García
-
-
-
 The CrossEditorProject project arises from the final degree project in computer science at the Complutense University of Madrid.
 
 This first version, developed in Python code, allows to obtain a light solar image editing tool, offering two modes, one in graphical interface (crossEditorGraphic) and the other on terminal (batch).
