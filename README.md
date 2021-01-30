@@ -2,6 +2,7 @@
 
 ![Python](https://img.shields.io/badge/python-v3.7.8-blue)
 ![Commit](https://img.shields.io/badge/last%20commit-january%202021-yellow)
+![License](https://img.shields.io/badge/license-MIT-orange)
 
 ```
 	Developed by: 
