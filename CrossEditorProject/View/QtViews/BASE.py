@@ -20,10 +20,10 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setStyleSheet("background-color: rgb(255, 255, 255);")
-        file = r'F:\CrossEditorProject\CrossEditorProject\View\QtViews\QSS\style.qss'
+        file = r'CrossEditorProject\View\QtViews\style.qss'
         qss_file = open(file).read()
         MainWindow.setStyleSheet(qss_file)
-        # window.setStyleSheet(qdarkgraystyle.load_stylesheet())
+        #window.setStyleSheet(qdarkgraystyle.load_stylesheet())
 
 
         self.PrincipalGrid = QtWidgets.QWidget(MainWindow)
