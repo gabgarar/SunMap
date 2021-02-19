@@ -1,4 +1,4 @@
-# CrossEditorProject
+# SunMap
 
 ![Python](https://img.shields.io/badge/python-v3.7.8-blue)
 ![Commit](https://img.shields.io/badge/last%20commit-january%202021-yellow)
@@ -9,7 +9,7 @@
 	Developed by: 
 	*	Gabriel García García        : gabgarar@gmail.com   			github@gabgarar
 ```
-The CrossEditorProject project arises from the final degree project in computer science at the Complutense University of Madrid.
+The SunMap project arises from the final degree project in computer science at the Complutense University of Madrid.
 
 This tool allows you to edit on a set of images at the same time, allowing you to store the result of the edits in GIF format.
 
