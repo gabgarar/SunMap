@@ -22,7 +22,7 @@ QTreeView, QListView
 QWidget:item:hover
 {
     background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #ca0619);
-    color: #000000;
+    color: #ffffff;
 }
 
 QWidget:item:selected
@@ -277,12 +277,12 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
 
 QTextEdit
 {
-    background-color: #242424;
+    background-color: #ffffff;
 }
 
 QPlainTextEdit
 {
-    background-color: #242424;
+    background-color: #ffffff;
 }
 
 QHeaderView::section
@@ -302,19 +302,19 @@ QDockWidget::title
 {
     text-align: center;
     spacing: 3px; /* spacing between items in the tool bar */
-    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232);
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #ffffff, stop:1 #323232);
 }
 
 QDockWidget::close-button, QDockWidget::float-button
 {
     text-align: center;
     spacing: 1px; /* spacing between items in the tool bar */
-    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #242424, stop:1 #323232);
+    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:0 #323232, stop: 0.5 #ffffff, stop:1 #323232);
 }
 
 QDockWidget::close-button:hover, QDockWidget::float-button:hover
 {
-    background: #242424;
+    background: #ffffff;
 }
 
 QDockWidget::close-button:pressed, QDockWidget::float-button:pressed

@@ -1,0 +1,6 @@
+1. Carga de la imagen dia 27/12/2020
+2. Equalization-> contrast stretching-> 99%
+3. Contrast-> gamma adjust-> 2,5
+4. Equalization-> rank equalization-> 16
+5. Contrast-> filled regional-> 4
+6. Cambiar pseudocolor de la imagen ...

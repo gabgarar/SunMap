@@ -1,0 +1,5 @@
+1. se abre el programa en modo batch
+2. se inserta el comando: down 2020/12/25 2020/01/22 aia 335 1440
+
+se descargan todas las imágenes entre las fechas 2020/12/25 al 2020/01/22, tomadas por el instrumento aia a una longitud de onda
+de 193A, cada toma cada 1440 minutos. (1 día)

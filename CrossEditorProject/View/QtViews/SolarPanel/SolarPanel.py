@@ -13,6 +13,8 @@ import numpy as np
 
 from Implements.ViewEvents.Toppings import applyToppings
 
+import matplotlib as mpl
+mpl.rcParams['text.color'] = 'White'
 
 class SolarPanel(QWidget):
     def __init__(self, Ctrl, MainWindow):
@@ -23,7 +25,7 @@ class SolarPanel(QWidget):
         Ctrl.addObserver(self)
         self.canvas = CustomFigCanvas(self.ctrl, None)
         self.toolbar = NavigationToolbar(self.canvas, self)
-
+        self.toolbar.setStyleSheet('color: White;')
         self.mainWindow = MainWindow
 
         self.setStyleSheet("background-color: #323232")
@@ -50,9 +52,11 @@ class SolarPanel(QWidget):
             if not fits.getSeq():
                 self.canvas = CustomFigCanvas(self.ctrl, fits)
                 self.toolbar = NavigationToolbar(self.canvas, self)
+                self.toolbar.setStyleSheet('color: White;')
             else:
                 self.canvas = CustomFigCanvasAnimated(self.ctrl, fits)
                 self.toolbar = NavigationToolbar(self.canvas, self)
+                self.toolbar.setStyleSheet('color: White;')
 
             self.layout().addWidget(self.toolbar)
             self.layout().addWidget(self.canvas)
@@ -115,13 +119,13 @@ class CustomFigCanvas(FigureCanvas):
                     ticker.FuncFormatter(lambda y, p: '{:.0f}″'.format(y * scale_x - centerArc_y)))
                 self.ax.set_yticks(self.calcArcPoints(center_y, self.maps.data.shape[0]))
 
-            """elif self.maps.meta['CUNIT2'] == 'deg':
+            elif self.maps.meta['CUNIT2'] == 'deg':
                 sc = 90 / (self.maps.meta['R_SUN'])
                 center_y = int(self.maps.data.shape[0] / 2)  # 1
                 centerArc_y = center_y * sc
                 self.ax.get_yaxis().set_major_formatter(
                     ticker.FuncFormatter(lambda y, p: '{:.0f}º'.format(y * sc - centerArc_y)))  # 2.5 para HMI
-                self.ax.set_yticks(self.calcDegPoints(center_y, self.maps.data.shape[0]))"""
+                self.ax.set_yticks(self.calcDegPoints(center_y, self.maps.data.shape[0]))
 
             #############
 
@@ -184,7 +188,6 @@ class CustomFigCanvas(FigureCanvas):
 
         applyToppings(self.maps.data, self.fits.getRSun(), self.fits.getCenter(), self.ax)
 
-        self.ax.set_title(label)
         self.ax.set_autoscale_on(False)
 
 
@@ -265,7 +268,7 @@ class CustomFigCanvasAnimated(FigureCanvas, TimedAnimation):
                 im = self.ax.imshow(self.maps[i].data, **self.maps[i].plot_settings)
 
                 applyToppings(self.maps[i].data, self.getRSun(self.maps[i]), self.getCenter(self.maps[i]), self.ax)
-                self.ax.set_title(label)
+  
                 self.ax.set_autoscale_on(False)
                 return None, self.ax
 

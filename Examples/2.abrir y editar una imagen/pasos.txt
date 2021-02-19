@@ -1,0 +1,5 @@
+1. Abrimos la herramienta gráfica
+2. File-> Load image-> cargamos la imagen del 25/12/2020
+3. Imagen cargada en la aplicacion
+4. Contrast-> filtering regional -> 2 (defecto)
+5. Contrast-> gamma adjust -> 2 (img5), 2,5 (img6)

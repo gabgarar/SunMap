@@ -1,0 +1,4 @@
+1. File-> Load sequence-> carpeta que se ha descargado
+2. File-> Save as GIF -> 250 (retraso entre dos tomas en milisegundos) (originalSec)
+3. Contrast-> Filtering regional-> 3 (se aplica a toda la secuencia cargada)
+   File-> Save as GIF -> 1000 (animation)
