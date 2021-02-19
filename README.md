@@ -7,7 +7,7 @@
 
 ```
 	Developed by: 
-	*	Gabriel García García        : gabgarar@gmail.com   			github@gabgarar
+	*	Gabriel García García        : gabgarar@gmail.com        github@gabgarar
 ```
 The SunMap project arises from the final degree project in computer science at the Complutense University of Madrid.
 
