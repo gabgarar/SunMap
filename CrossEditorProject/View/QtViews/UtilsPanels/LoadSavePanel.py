@@ -26,7 +26,6 @@ class FileDialog(QDialog):
                                                   "FITS Files (*.fits)", options=options)
         if fileName:
             comm = "LOAD " + fileName
-            print(comm)
             return comm
         else:
             return None
@@ -46,10 +45,10 @@ class FileDialog(QDialog):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getSaveFileName(self, "Save the current file.", "",
-                                                  "All Files (*);;Text Files (*.txt)", options=options)
+                                                  "Image File (*.png)", options=options)
         if fileName:
-            comm = "SAVE" + fileName
-            return fileName
+            comm = "SAVE " + fileName
+            return comm
         else:
             return None
 

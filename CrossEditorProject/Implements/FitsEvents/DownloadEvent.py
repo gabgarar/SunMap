@@ -29,7 +29,7 @@ class DownloadEvent(Event):
                                       a.vso.Sample(dif * u.minute))
 
             print(searchs)
-            Fido.fetch(searchs, path='../{instrument}/{file}')
+            Fido.fetch(searchs, path='{instrument}/{file}')
 
             ''' How to use :
                 soon = '2012/3/4'

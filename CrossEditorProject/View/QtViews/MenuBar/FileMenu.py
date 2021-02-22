@@ -40,7 +40,7 @@ class FileMenu(QMenu):
     # Save
 
     def fileSave(self):
-        self.ctrl.execute(comm=FileDialog("Save").getComm())
+        self.ctrl.execute(comm=FileDialog("Save", self.ctrl).getComm())
 
     def fileSaveGif(self):
         self.ctrl.execute(comm="gif " + str(self.getDouble()))
