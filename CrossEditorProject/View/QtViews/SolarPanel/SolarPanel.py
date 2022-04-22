@@ -91,7 +91,6 @@ class CustomFigCanvas(FigureCanvas):
         self.ax.tick_params(axis='y', colors='#c9c9c9')
 
         if self.fits is not None:
-            print("EL TAMAÑO DE LA IMAGEN ES DE : ", self.maps.data.shape)
             scale_x = self.maps.meta["CDELT1"]
             center_x = int(self.maps.data.shape[0] / 2)
             center_y = int(self.maps.data.shape[1] / 2)
@@ -110,7 +109,7 @@ class CustomFigCanvas(FigureCanvas):
                 center_x = int(self.maps.data.shape[1] / 2)
                 centerArc_x = center_x * scale_x
                 self.ax.get_xaxis().set_major_formatter(
-                    ticker.FuncFormatter(lambda x, p: '{:.0f}º'.format(x * scale_x - centerArc_x)))
+                    ticker.FuncFormatter(lambda x, p: '{:.0f}$^o$'.format(x * scale_x - centerArc_x)))
                 self.ax.set_xticks(self.calcDegXXPoints(center_x, self.maps.data.shape[1], scale_x))
 
                 # Y AXIS. -> VERTICAL ''
@@ -124,8 +123,15 @@ class CustomFigCanvas(FigureCanvas):
                 center_y = int(self.maps.data.shape[0] / 2)  # 1
                 centerArc_y = center_y * sc
                 self.ax.get_yaxis().set_major_formatter(
-                    ticker.FuncFormatter(lambda y, p: '{:.0f}º'.format(y * sc - centerArc_y)))  # 2.5 para HMI
+                    ticker.FuncFormatter(lambda y, p: '{:.1f}'.format(
+                        np.sin(np.pi * (np.round(y * sc - centerArc_y)) /180)
+                        #np.round(y * sc - centerArc_y))
+                    )))
+                
+                
                 self.ax.set_yticks(self.calcDegPoints(center_y, self.maps.data.shape[0]))
+                self.ax.set_ylabel("sin(latitude)")
+                self.ax.set_ylabel("longitude")
 
             #############
 
@@ -147,7 +153,7 @@ class CustomFigCanvas(FigureCanvas):
             ini_der += int(250 / self.maps.meta["CDELT1"])
         return ranks
 
-    def calcDegXXPoints(self, center, lim, sc):
+    def calcDegXXPoints(self, center, lim, sc): 
         ranks = list()
         ini_izq = ini_der = center
         ranks.append(center)
@@ -180,9 +186,6 @@ class CustomFigCanvas(FigureCanvas):
 
         label = 'Date:  {0}'.format(self.maps.meta["DATE-OBS"])
 
-        if self.maps.meta['detector'] == 'HMI':
-            self.maps.plot_settings['cmap'] = 'hmimag'
-            self.maps.plot_settings['norm'] = plt.Normalize(-1500, 1500)
 
         im = self.ax.imshow(self.maps.data, **self.fits.getVisualParams())  # resample=[0.5, 0.5]
 
@@ -218,15 +221,10 @@ class CustomFigCanvasAnimated(FigureCanvas, TimedAnimation):
         self.ax.tick_params(axis='x', colors='#c9c9c9')
         self.ax.tick_params(axis='y', colors='#c9c9c9')
 
-        if self.maps[0].meta['detector'] == 'HMI':
-            for elem in self.maps:
-                elem.plot_settings['cmap'] = 'hmimag'
-                elem.plot_settings['norm'] = plt.Normalize(-1500, 1500)
-
         if self.fits is not None:
             scale_x = self.maps[0].meta["CDELT1"]
             center_x = int(self.maps[0].data.shape[0] / 2)
-            center_y = int(self.maps[0].data.shape[0] / 2)
+            center_y = int(self.maps[0].data.shape[1] / 2)
             centerArc_x = center_x * scale_x
             centerArc_y = center_y * scale_x
 
@@ -261,14 +259,13 @@ class CustomFigCanvasAnimated(FigureCanvas, TimedAnimation):
         if self.fits:
             if self.fits.getSeq():
                 i = framedata
-                print(i)
                 self.frames = np.arange(0, len(self.maps))
                 label = 'Date:  {0}'.format(self.maps[i].meta["DATE-OBS"])
 
                 im = self.ax.imshow(self.maps[i].data, **self.maps[i].plot_settings)
 
                 applyToppings(self.maps[i].data, self.getRSun(self.maps[i]), self.getCenter(self.maps[i]), self.ax)
-  
+
                 self.ax.set_autoscale_on(False)
                 return None, self.ax
 
