@@ -122,16 +122,10 @@ class CustomFigCanvas(FigureCanvas):
                 sc = 90 / (self.maps.meta['R_SUN'])
                 center_y = int(self.maps.data.shape[0] / 2)  # 1
                 centerArc_y = center_y * sc
-                self.ax.get_yaxis().set_major_formatter(
-                    ticker.FuncFormatter(lambda y, p: '{:.1f}'.format(
-                        np.sin(np.pi * (np.round(y * sc - centerArc_y)) /180)
-                        #np.round(y * sc - centerArc_y))
-                    )))
-                
-                
+                self.ax.set_yticklabels([0, 0.5, -0.5, 1, -1])
                 self.ax.set_yticks(self.calcDegPoints(center_y, self.maps.data.shape[0]))
                 self.ax.set_ylabel("sin(latitude)")
-                self.ax.set_ylabel("longitude")
+                self.ax.set_xlabel("longitude")
 
             #############
 
@@ -164,16 +158,16 @@ class CustomFigCanvas(FigureCanvas):
             ini_der += int(60 / sc)
         return ranks
 
+    
     def calcDegPoints(self, center, lim):
         ranks = list()
+        limit = 45
         ini_izq = ini_der = center
         sc = 90 / self.maps.meta['R_SUN']
-        ranks.append(center)
-        while ini_der < lim:
-            ranks.append(ini_der + int(30 / sc))
-            ranks.append(ini_izq - int(30 / sc))
-            ini_izq -= int(30 / sc)
-            ini_der += int(30 / sc)
+        for i in range(int(180 / limit)):
+            ranks.append(ini_der + i *int(limit / sc))
+            if i > 0:
+                ranks.append(ini_izq - i * int(limit / sc))
         return ranks
 
     def stop(self):
