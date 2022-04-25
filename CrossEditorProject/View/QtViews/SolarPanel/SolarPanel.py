@@ -164,10 +164,19 @@ class CustomFigCanvas(FigureCanvas):
         limit = 45
         ini_izq = ini_der = center
         sc = 90 / self.maps.meta['R_SUN']
-        for i in range(int(180 / limit)):
-            ranks.append(ini_der + i *int(limit / sc))
-            if i > 0:
-                ranks.append(ini_izq - i * int(limit / sc))
+        n = int(180 / limit)
+        for i in range(n):
+            if (i > 0) and (i < n-2):
+                ranks.append(ini_der + i * int(limit / sc) + 60)
+                ranks.append(ini_izq - i * int(limit / sc) - 60)
+            elif (i > 0) and (i == n-1):
+                ranks.append(ini_der + i * int(limit / sc) + 10)
+                ranks.append(ini_izq - i * int(limit / sc) - 10)
+            else:
+                ranks.append(ini_der + i *int(limit / sc))
+                if i > 0:
+                    ranks.append(ini_izq - i * int(limit / sc))
+                
         return ranks
 
     def stop(self):
