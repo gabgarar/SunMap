@@ -166,19 +166,43 @@ class CustomFigCanvas(FigureCanvas):
         sc = 90 / self.maps.meta['R_SUN']
         n = int(180 / limit)
         for i in range(n):
-            if (i > 0) and (i < n-2):
-                ranks.append(ini_der + i * int(limit / sc) + 60)
-                ranks.append(ini_izq - i * int(limit / sc) - 60)
-            elif (i > 0) and (i == n-1):
-                ranks.append(ini_der + i * int(limit / sc) + 10)
-                ranks.append(ini_izq - i * int(limit / sc) - 10)
+            if (i == n-2):
+                ranks.append(ini_der + i * int(limit / sc) + 6)
+                ranks.append(ini_izq - i * int(limit / sc) - 6)
+            elif (i == n-3):
+                ranks.append(ini_der + i * int(limit / sc) + 12)
+                ranks.append(ini_izq - i * int(limit / sc) - 12)
             else:
                 ranks.append(ini_der + i *int(limit / sc))
                 if i > 0:
                     ranks.append(ini_izq - i * int(limit / sc))
                 
         return ranks
-
+    
+    """
+    def calcDegPoints(self, center, lim):
+        ranks = list()
+        limit = 45
+        ini_izq = ini_der = center
+        sc = 90 / self.maps.meta['R_SUN']
+        n = int(180 / limit)
+        for i in range(n):
+            
+            if (i > 0) and (i < n-2):
+                ranks.append(ini_der + i * int(limit / sc) + 60)
+                ranks.append(ini_izq - i * int(limit / sc) - 60)
+            
+            if (i > 0) and (i == n-1):
+                ranks.append(ini_der + i * int(limit / sc) + 30)
+                ranks.append(ini_izq - i * int(limit / sc) - 30)
+            else:
+                ranks.append(ini_der + i *int(limit / sc))
+                if i > 0:
+                    ranks.append(ini_izq - i * int(limit / sc))
+                
+        return ranks6
+    """
+    
     def stop(self):
         pass
 
